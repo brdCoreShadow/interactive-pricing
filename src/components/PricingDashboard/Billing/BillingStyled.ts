@@ -9,6 +9,8 @@ type Props = {
 
 export const BillingCon = styled.div`
 padding-bottom: 38px;
+padding-left: 24px;
+padding-right: 24px;
 
 border-bottom: 1px solid #ECF0FB;
 `;

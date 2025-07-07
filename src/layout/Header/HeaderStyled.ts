@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 export const HeaderCon = styled.header`
   padding-top: 88px;
   padding-bottom: 64px;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='146' height='145'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23CFD8EF'%3E%3Ccircle cx='63' cy='82' r='62.5'/%3E%3Ccircle cx='105' cy='41' r='40.5'/%3E%3C/g%3E%3C/svg%3E");
+
+background-repeat: no-repeat;
+background-position: center;
 `;
 
 export const HeaderContentCon = styled.div`

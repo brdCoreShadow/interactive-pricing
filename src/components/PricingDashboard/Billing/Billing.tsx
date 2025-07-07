@@ -26,36 +26,44 @@ const Billing: React.FC = () => {
     return !yearly ? (base * 0.75).toFixed(2) : base.toFixed(2);
   };
 
+  const handleRange = (evt: React.ChangeEvent<HTMLInputElement>) =>
+    setValue(Number(evt.target.value));
+
+const handleCheck = () => setIsYearly(!isYearly)
+
   return (
     <SC.BillingCon>
       <SC.BullingTitle>{getPageviews(value)} pageviews</SC.BullingTitle>
       <SC.RangeSlider
         type="range"
         value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
+        onChange={handleRange}
         style={{
           background: `linear-gradient(to right, #0ef ${value}%, #e0e7ff ${value}%)`,
         }}
       />
-      <SC.PerBillCon >
-        ${getPrice(value, isYearly)} <span>{isYearly ? "/ month" : "/ year"}</span>
+      <SC.PerBillCon>
+        ${getPrice(value, isYearly)}{" "}
+        <span>{isYearly ? "/ month" : "/ year"}</span>
       </SC.PerBillCon>
 
       {/* Billing Toggle */}
       <SC.CheckBoxCon isYearly={isYearly}>
         <span>Monthly Billing</span>
-        <label >
-            {/* <SC.CheckIcon src={checkOffIcon} alt="checkOff" />   */}
+        <label>
           <input
             type="checkbox"
             checked={isYearly}
-            onChange={() => setIsYearly(!isYearly)}
+            onChange={handleCheck}
           />
           <div></div>
-          <div ></div>
+          <div></div>
         </label>
         <span>
-          Yearly Billing <SC.DiscountCon><span>-25%</span></SC.DiscountCon>
+          Yearly Billing{" "}
+          <SC.DiscountCon>
+            <span>-25%</span>
+          </SC.DiscountCon>
         </span>
       </SC.CheckBoxCon>
     </SC.BillingCon>
