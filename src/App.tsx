@@ -1,4 +1,5 @@
 import * as SC from "./AppStyled"
+import Benefits from "./components/PricingDashboard/Benefits/Benefits"
 import Billing from "./components/PricingDashboard/Billing/Billing"
 import PricingDashboard from "./components/PricingDashboard/PricingDashboard"
 
@@ -12,6 +13,7 @@ function App() {
     <SharedLayout>
       <PricingDashboard>
         <Billing/>
+        <Benefits/>
       </PricingDashboard>
     </SharedLayout>
     </SC.AppCon>

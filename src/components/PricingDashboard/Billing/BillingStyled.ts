@@ -31,6 +31,7 @@ export const RangeSlider = styled.input`
   margin-bottom: 24px;
 
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 8px;
   border-radius: 4px;
