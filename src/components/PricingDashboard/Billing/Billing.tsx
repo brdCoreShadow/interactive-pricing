@@ -1,6 +1,8 @@
 import { useState } from "react";
 import * as SC from "./BillingStyled";
 
+// import checkOffIcon from "../../../assets/images/checkOff.png"
+
 const Billing: React.FC = () => {
   const [value, setValue] = useState(50);
   const [isYearly, setIsYearly] = useState(false);
@@ -21,7 +23,7 @@ const Billing: React.FC = () => {
     else if (val <= 80) base = 24;
     else base = 36;
 
-    return yearly ? (base * 0.75).toFixed(2) : base.toFixed(2);
+    return !yearly ? (base * 0.75).toFixed(2) : base.toFixed(2);
   };
 
   return (
@@ -35,27 +37,27 @@ const Billing: React.FC = () => {
           background: `linear-gradient(to right, #0ef ${value}%, #e0e7ff ${value}%)`,
         }}
       />
-      <div className="text-3xl font-bold mt-4">
-        ${getPrice(value, isYearly)} <span>/ month</span>
-      </div>
+      <SC.PerBillCon >
+        ${getPrice(value, isYearly)} <span>{isYearly ? "/ month" : "/ year"}</span>
+      </SC.PerBillCon>
 
       {/* Billing Toggle */}
-      <div className="mt-6 flex items-center justify-center gap-4 text-sm text-slate-600">
+      <SC.CheckBoxCon isYearly={isYearly}>
         <span>Monthly Billing</span>
-        <label className="relative inline-flex items-center cursor-pointer">
+        <label >
+            {/* <SC.CheckIcon src={checkOffIcon} alt="checkOff" />   */}
           <input
             type="checkbox"
-            className="sr-only peer"
             checked={isYearly}
             onChange={() => setIsYearly(!isYearly)}
           />
-          <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-cyan-400 transition-all"></div>
-          <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition-all"></div>
+          <div></div>
+          <div ></div>
         </label>
         <span>
-          Yearly Billing <span className="text-rose-400">-25%</span>
+          Yearly Billing <SC.DiscountCon><span>-25%</span></SC.DiscountCon>
         </span>
-      </div>
+      </SC.CheckBoxCon>
     </SC.BillingCon>
   );
 };

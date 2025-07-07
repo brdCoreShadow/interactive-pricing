@@ -1,6 +1,17 @@
 import styled from "@emotion/styled";
 
-export const BillingCon = styled.div``;
+import checkOffIcon from "../../../assets/images/checkOff.png";
+import CheckOnIcon from "../../../assets/images/togglIconOn.png";
+
+type Props = {
+  isYearly: boolean;
+};
+
+export const BillingCon = styled.div`
+padding-bottom: 38px;
+
+border-bottom: 1px solid #ECF0FB;
+`;
 
 export const BullingTitle = styled.h3`
   margin-bottom: 24px;
@@ -74,5 +85,85 @@ export const RangeSlider = styled.input`
     &:hover {
       transform: scale(1.1);
     }
+  }
+`;
+
+export const PerBillCon = styled.div`
+  margin-bottom: 34px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+
+  color: #293356;
+
+  & > span {
+    margin-left: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #848ead;
+  }
+`;
+
+export const CheckBoxCon = styled.div<Props>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #848ead;
+
+  & label {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      display: inline-block;
+
+      content: "";
+
+      width: 43px;
+      height: 22px;
+      background-image: ${({ isYearly }) =>
+        `url(${isYearly ? CheckOnIcon : checkOffIcon})`};
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+`;
+
+export const DiscountCon = styled.div`
+  display: inline-block;
+
+  margin-left: 6px;
+
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  background-color: rgba(255, 141, 104, 0.3);
+
+  border-radius: 10px;
+
+  & > span {
+    font-size: 10px;
+    font-weight: 800;
+
+    color: #ff8d68;
   }
 `;
