@@ -26,17 +26,17 @@ const Billing: React.FC = () => {
 
   return (
     <SC.BillingCon>
-      <h2>{getPageviews(value)} pageviews</h2>
-      <input
+      <SC.BullingTitle>{getPageviews(value)} pageviews</SC.BullingTitle>
+      <SC.RangeSlider
         type="range"
-        min="0"
-        max="100"
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
+        style={{
+          background: `linear-gradient(to right, #0ef ${value}%, #e0e7ff ${value}%)`,
+        }}
       />
       <div className="text-3xl font-bold mt-4">
-        ${getPrice(value, isYearly)}{" "}
-        <span >/ month</span>
+        ${getPrice(value, isYearly)} <span>/ month</span>
       </div>
 
       {/* Billing Toggle */}
