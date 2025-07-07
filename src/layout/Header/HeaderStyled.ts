@@ -8,6 +8,11 @@ export const HeaderCon = styled.header`
 
 background-repeat: no-repeat;
 background-position: center;
+
+@media (min-width: 1280px){
+    padding-top: 68px;
+    padding-bottom: 54px;
+}
 `;
 
 export const HeaderContentCon = styled.div`
@@ -25,6 +30,12 @@ export const HeaderContentCon = styled.div`
     font-weight: 800;
 
     color: #293356;
+
+    @media (min-width: 1280px){
+        margin-bottom: 12px;
+
+        font-size: 28px;
+    }
   }
 
   & > p {
@@ -34,5 +45,9 @@ export const HeaderContentCon = styled.div`
     font-weight: 600;
 
     color: #848ead;
+
+    @media (min-width: 1280px){
+        font-size: 15px;
+    }
   }
 `;

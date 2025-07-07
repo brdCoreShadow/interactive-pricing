@@ -8,11 +8,26 @@ type Props = {
 };
 
 export const BillingCon = styled.div`
-padding-bottom: 38px;
-padding-left: 24px;
-padding-right: 24px;
+  padding-bottom: 38px;
+  padding-left: 24px;
+  padding-right: 24px;
 
-border-bottom: 1px solid #ECF0FB;
+  border-bottom: 1px solid #ecf0fb;
+
+  @media (min-width: 1280px) {
+    padding-bottom: 40px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+`;
+
+export const DeskFlexCon = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
 `;
 
 export const BullingTitle = styled.h3`
@@ -25,6 +40,13 @@ export const BullingTitle = styled.h3`
   letter-spacing: 1.71px;
 
   color: #848ead;
+
+  @media (min-width: 1280px) {
+    margin-bottom: 0;
+
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
 `;
 
 export const RangeSlider = styled.input`
@@ -38,6 +60,10 @@ export const RangeSlider = styled.input`
   background: linear-gradient(to right, #a5f3fc 50%, #e0e7ff 50%);
   outline: none;
   transition: background 0.3s ease;
+
+  @media (min-width: 1280px) {
+    margin-bottom: 40px;
+  }
 
   &::-webkit-slider-runnable-track {
     height: 8px;
@@ -62,8 +88,14 @@ export const RangeSlider = styled.input`
     background-repeat: no-repeat;
     background-position: center;
 
+    transition: all 0.3s;
+
     &:hover {
       transform: scale(1.1);
+
+      background-color: #24aea1;
+
+      transition: all 0.3s;
     }
   }
 
@@ -105,6 +137,13 @@ export const PerBillCon = styled.div`
 
   color: #293356;
 
+  @media (min-width: 1280px) {
+    margin-bottom: 0;
+
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
   & > span {
     margin-left: 10px;
 
@@ -112,6 +151,12 @@ export const PerBillCon = styled.div`
     font-weight: 600;
 
     color: #848ead;
+
+    @media (min-width: 1280px) {
+      margin-left: 8px;
+
+      font-size: 16px;
+    }
   }
 `;
 
@@ -126,8 +171,22 @@ export const CheckBoxCon = styled.div<Props>`
 
   color: #848ead;
 
+  @media (min-width: 1280px) {
+    justify-content: center;
+
+    & > *:not(:last-of-type) {
+      margin-right: 16px;
+    }
+  }
+
   & label {
     position: relative;
+
+    &:hover,
+    &:focus,
+    &:active {
+      cursor: pointer;
+    }
 
     &::before {
       position: absolute;
@@ -149,6 +208,14 @@ export const CheckBoxCon = styled.div<Props>`
   }
 `;
 
+export const YearlyBilling = styled.span`
+  @media (min-width: 1280px) {
+    display: inline-block;
+
+    margin-left: 32px;
+  }
+`;
+
 export const DiscountCon = styled.div`
   display: inline-block;
 
@@ -162,6 +229,10 @@ export const DiscountCon = styled.div`
   background-color: rgba(255, 141, 104, 0.3);
 
   border-radius: 10px;
+
+  @media (min-width: 1280px) {
+    margin-left: 10px;
+  }
 
   & > span {
     font-size: 10px;

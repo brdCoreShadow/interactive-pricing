@@ -11,4 +11,8 @@ background-size: contain;
 background-repeat: no-repeat;
 
 background-size: 100% 400px;
+
+@media (min-width: 1280px){
+    height: 450px;
+}
 `

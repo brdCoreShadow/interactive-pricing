@@ -1,11 +1,14 @@
 import { useState } from "react";
 import * as SC from "./BillingStyled";
+import { useScreenSize } from "@/hooks/usSizeScreen";
 
 // import checkOffIcon from "../../../assets/images/checkOff.png"
 
 const Billing: React.FC = () => {
   const [value, setValue] = useState(50);
   const [isYearly, setIsYearly] = useState(false);
+
+  const { isDesktop } = useScreenSize();
 
   const getPageviews = (val: number) => {
     if (val <= 20) return "10K";
@@ -29,42 +32,59 @@ const Billing: React.FC = () => {
   const handleRange = (evt: React.ChangeEvent<HTMLInputElement>) =>
     setValue(Number(evt.target.value));
 
-const handleCheck = () => setIsYearly(!isYearly)
+  const handleCheck = () => setIsYearly(!isYearly);
 
   return (
     <SC.BillingCon>
-      <SC.BullingTitle>{getPageviews(value)} pageviews</SC.BullingTitle>
-      <SC.RangeSlider
-        type="range"
-        value={value}
-        onChange={handleRange}
-        style={{
-          background: `linear-gradient(to right, #0ef ${value}%, #e0e7ff ${value}%)`,
-        }}
-      />
-      <SC.PerBillCon>
-        ${getPrice(value, isYearly)}{" "}
-        <span>{isYearly ? "/ month" : "/ year"}</span>
-      </SC.PerBillCon>
+      {isDesktop ? (
+        <>
+          <SC.DeskFlexCon>
+            <SC.BullingTitle>{getPageviews(value)} pageviews</SC.BullingTitle>
+            <SC.PerBillCon>
+              ${getPrice(value, isYearly)}{" "}
+              <span>{isYearly ? "/ month" : "/ year"}</span>
+            </SC.PerBillCon>
+          </SC.DeskFlexCon>
+          <SC.RangeSlider
+            type="range"
+            value={value}
+            onChange={handleRange}
+            style={{
+              background: `linear-gradient(to right, #0ef ${value}%, #e0e7ff ${value}%)`,
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <SC.BullingTitle>{getPageviews(value)} pageviews</SC.BullingTitle>
+          <SC.RangeSlider
+            type="range"
+            value={value}
+            onChange={handleRange}
+            style={{
+              background: `linear-gradient(to right, #0ef ${value}%, #e0e7ff ${value}%)`,
+            }}
+          />
+          <SC.PerBillCon>
+            ${getPrice(value, isYearly)}{" "}
+            <span>{isYearly ? "/ month" : "/ year"}</span>
+          </SC.PerBillCon>
+        </>
+      )}
 
-      {/* Billing Toggle */}
       <SC.CheckBoxCon isYearly={isYearly}>
         <span>Monthly Billing</span>
         <label>
-          <input
-            type="checkbox"
-            checked={isYearly}
-            onChange={handleCheck}
-          />
+          <input type="checkbox" checked={isYearly} onChange={handleCheck} />
           <div></div>
           <div></div>
         </label>
-        <span>
+        <SC.YearlyBilling>
           Yearly Billing{" "}
           <SC.DiscountCon>
-            <span>-25%</span>
+            <span>-25% {isDesktop && "disount"}</span>
           </SC.DiscountCon>
-        </span>
+        </SC.YearlyBilling>
       </SC.CheckBoxCon>
     </SC.BillingCon>
   );
